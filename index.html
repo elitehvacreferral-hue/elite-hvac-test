@@ -1,11 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Elite HVAC Referrals</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite HVAC Referrals</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+  color: #333;
+}
+header {
+  background: #d32f2f;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+header h1 {
+  margin: 0;
+  font-size: 2.4em;
+}
+header p {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+input, select, textarea, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  font-size: 1em;
+}
+button {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+button:hover {
+  background: #b71c1c;
+}
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  margin: 30px 0;
+}
+</style>
 </head>
-<body style="font-family:Arial; background:#f4f4f4; text-align:center; padding-top:50px;">
-  <h1 style="color:red;">REPLACE HVAC NOW!!</h1>
+
+<body>
+
+<header>
+  <h1>REPLACE HVAC NOW!!</h1>
   <p>Get connected to a real HVAC Pro</p>
+</header>
+
+<div class="container">
+  <form>
+    <input type="text" placeholder="Full Name" required>
+    <input type="tel" placeholder="Phone Number" required>
+    <input type="text" placeholder="City / Zip Code" required>
+
+    <select required>
+      <option value="">Service Needed</option>
+      <option>HVAC Replacement</option>
+      <option>HVAC Repair</option>
+      <option>No Heat / No Cool</option>
+    </select>
+
+    <textarea placeholder="Describe the issue (optional)"></textarea>
+
+    <button type="submit">Get Connected Now</button>
+  </form>
+</div>
+
+<footer>
+  Elite HVAC Referrals • Fast Local HVAC Connections
+</footer>
+
 </body>
 </html>
