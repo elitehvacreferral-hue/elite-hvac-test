@@ -6,103 +6,96 @@
 <title>Elite HVAC Referrals</title>
 
 <style>
+/* Reset & typography */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
   color: #333;
 }
 
-/* Hero section */
+/* Gradient Hero Section */
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* Hero image fills container reliably */
-.hero-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-/* Overlay to make text readable */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #1976d2, #d32f2f);
+  color: white;
   text-align: center;
-  padding: 60px 20px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* Hero text */
 header h1 {
-  color: #fff;
   font-size: 2.4em;
-  margin: 0 0 10px;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+  margin-bottom: 10px;
 }
 
 header p {
-  color: #fff;
   font-size: 1.2em;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-  margin: 0;
+  opacity: 0.9;
 }
 
 /* Form container */
 .container {
   max-width: 600px;
-  margin: 40px auto;
-  background: rgba(255,255,255,0.95);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: -50px auto 40px;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
 }
 
-input, select, textarea, button {
+/* Form elements */
+input, select, textarea {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin-top: 12px;
   font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 8px rgba(25,118,210,0.3);
 }
 
 button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
   background: #d32f2f;
   color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.2em;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background: #b71c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* Logo top-left */
 .logo {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 15px;
+  left: 15px;
   z-index: 1000;
   width: 60px;
   height: 60px;
   background: linear-gradient(135deg, #d32f2f, #1976d2);
-  border-radius: 12px;
+  border-radius: 15px;
   color: white;
   font-weight: bold;
   font-size: 1.8em;
@@ -110,10 +103,86 @@ button:hover {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  font-family: Arial, sans-serif;
 }
 
 /* Patriotic flag top-right */
 .flag {
   position: fixed;
-  top:
+  top: 15px;
+  right: 15px;
+  width: 60px;
+  height: 40px;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg') no-repeat center center;
+  background-size: contain;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+/* Small professional disclaimer */
+.disclaimer {
+  max-width: 600px;
+  margin: 30px auto 40px;
+  font-size: 0.65em;
+  color: #555;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.4;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  header h1 { font-size: 2em; }
+  header p { font-size: 1em; }
+  .container { padding: 30px 20px; margin: -40px auto 30px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Logo -->
+<div class="logo">E</div>
+
+<!-- Patriotic flag -->
+<div class="flag"></div>
+
+<!-- Hero Section -->
+<div class="hero">
+  <header>
+    <h1>Need a New HVAC System? Get Connected to a Local Pro Today</h1>
+    <p>We connect High Desert homeowners with licensed HVAC replacement specialists — fast, reliable, and hassle-free.</p>
+  </header>
+</div>
+
+<!-- Lead Form -->
+<div class="container">
+  <form>
+    <input type="text" placeholder="Full Name" required>
+    <input type="tel" placeholder="Phone Number" required>
+    <input type="text" placeholder="City / Zip Code" required>
+
+    <select required>
+      <option value="">Service Needed</option>
+      <option>HVAC Replacement</option>
+      <option>HVAC Repair</option>
+      <option>No Heat / No Cool</option>
+    </select>
+
+    <textarea placeholder="Describe the issue (optional)"></textarea>
+
+    <button type="submit">Get Connected Now</button>
+
+    <p style="text-align:center; font-size:0.9em; color:#666; margin-top:10px;">Licensed & Insured HVAC Pros. No hidden fees. Fast response.</p>
+  </form>
+</div>
+
+<!-- Small professional disclaimer -->
+<div class="disclaimer">
+  <p>Disclaimer: We connect you with licensed HVAC professionals. We do not perform work and are not responsible for their services.</p>
+</div>
+
+</body>
+</html>
