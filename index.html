@@ -1,230 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Elite HVAC Referrals</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite HVAC Referrals</title>
 
-<style>
-/* ---------- GLOBAL ---------- */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  background: #f4f4f4;
-  color: #333;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #333;
+    }
 
-/* ---------- HERO ---------- */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.25),
-    rgba(0,0,0,0.55)
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-}
+    .card {
+      background: #ffffff;
+      max-width: 520px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      text-align: center;
+    }
 
-/* ---------- TEXT ---------- */
-header h1 {
-  color: #ffffff;
-  font-size: 2.6em;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-}
+    h1 {
+      color: #d32f2f;
+      margin-bottom: 10px;
+      font-size: 2em;
+    }
 
-header p {
-  color: #f0f0f0;
-  font-size: 1.2em;
-  max-width: 700px;
-  margin: 0 auto;
-}
+    p.sub {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 25px;
+    }
 
-.trust {
-  margin-top: 18px;
-  font-size: 0.95em;
-  color: #e0e0e0;
-}
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
 
-/* ---------- CTA BAR ---------- */
-.cta-bar {
-  max-width: 600px;
-  margin: -35px auto 20px;
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 16px;
-  text-align: center;
-  font-weight: 600;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      font-size: 1.1em;
+      background: #d32f2f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-/* ---------- FORM ---------- */
-.container {
-  max-width: 600px;
-  margin: 0 auto 40px;
-  background: #ffffff;
-  padding: 35px 30px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
+    button:hover {
+      background: #b71c1c;
+    }
 
-input, select, textarea {
-  width: 100%;
-  padding: 14px;
-  margin-top: 12px;
-  font-size: 1em;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
+    .success {
+      display: none;
+      margin-top: 20px;
+      font-size: 1em;
+      color: green;
+    }
 
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: #1976d2;
-  box-shadow: 0 0 8px rgba(25,118,210,0.25);
-}
+    .disclaimer {
+      margin-top: 25px;
+      font-size: 0.65em;
+      color: #777;
+      font-style: italic;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
 
-button {
-  width: 100%;
-  padding: 15px;
-  margin-top: 20px;
-  font-size: 1.2em;
-  border: none;
-  border-radius: 12px;
-  background: #d32f2f;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #b71c1c;
-}
-
-/* ---------- LOGO ---------- */
-.logo {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  width: 58px;
-  height: 58px;
-  background: linear-gradient(135deg, #d32f2f, #1976d2);
-  border-radius: 14px;
-  color: #ffffff;
-  font-size: 1.8em;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-/* ---------- FLAG ---------- */
-.flag {
-  position: fixed;
-  top: 18px;
-  right: 15px;
-  width: 52px;
-  height: 34px;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg') no-repeat center center;
-  background-size: contain;
-  z-index: 1000;
-}
-
-/* ---------- DISCLAIMER ---------- */
-.disclaimer {
-  max-width: 600px;
-  margin: 30px auto 40px;
-  font-size: 0.65em;
-  color: #666;
-  text-align: center;
-  font-style: italic;
-  line-height: 1.4;
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-}
-
-/* ---------- MOBILE ---------- */
-@media (max-width: 768px) {
-  header h1 { font-size: 2em; }
-  header p { font-size: 1em; }
-}
-</style>
+    .logo {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, #d32f2f, #1976d2);
+      color: white;
+      font-weight: bold;
+      font-size: 1.8em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- LOGO -->
 <div class="logo">E</div>
 
-<!-- FLAG -->
-<div class="flag"></div>
-
-<!-- HERO -->
 <div class="hero">
-  <div class="overlay">
-    <header>
-      <h1>HVAC Replacement Made Simple</h1>
-      <p>
-        Get connected with licensed HVAC professionals for fast, reliable system replacement — no pressure, no obligation.
-      </p>
-      <div class="trust">
-        ✔ Licensed Contractors &nbsp;•&nbsp;
-        ✔ Fast Response &nbsp;•&nbsp;
-        ✔ No Obligation Quotes
-      </div>
-    </header>
+  <div class="card">
+    <h1>Replace Your HVAC System</h1>
+    <p class="sub">Get connected with a licensed HVAC replacement specialist in minutes.</p>
+
+    <form id="leadForm">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="text" name="city" placeholder="City / Zip Code" required />
+
+      <select name="service" required>
+        <option value="">Service Needed</option>
+        <option>HVAC Replacement</option>
+        <option>No Heat</option>
+        <option>No Cooling</option>
+      </select>
+
+      <textarea name="message" placeholder="Brief description (optional)"></textarea>
+
+      <button type="submit">Get Connected Now</button>
+    </form>
+
+    <div class="success" id="successMsg">
+      ✅ Thank you! A local HVAC professional will contact you shortly.
+    </div>
+
+    <div class="disclaimer">
+      We connect homeowners with independent, licensed HVAC professionals.
+      We do not perform installations or guarantee contractor services.
+    </div>
   </div>
 </div>
 
-<!-- CTA BAR -->
-<div class="cta-bar">
-  Get matched with a local HVAC replacement specialist in minutes.
-</div>
+<script>
+  const form = document.getElementById("leadForm");
+  const successMsg = document.getElementById("successMsg");
 
-<!-- FORM -->
-<div class="container">
-  <form method="POST">
-    <input type="text" name="name" placeholder="Full Name" required />
-    <input type="tel" name="phone" placeholder="Phone Number" required />
-    <input type="text" name="location" placeholder="City / Zip Code" required />
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-    <select name="service" required>
-      <option value="">Service Needed</option>
-      <option>HVAC Replacement</option>
-      <option>HVAC Repair</option>
-      <option>No Heat / No Cool</option>
-    </select>
+    const data = new FormData(form);
 
-    <textarea name="details" placeholder="Describe the issue (optional)"></textarea>
-
-    <button type="submit">Get Connected Now</button>
-
-    <p style="text-align:center; font-size:0.9em; color:#666; margin-top:10px;">
-      Licensed & Insured HVAC Pros • Fast Response
-    </p>
-  </form>
-</div>
-
-<!-- DISCLAIMER -->
-<div class="disclaimer">
-  Elite HVAC Referrals is a referral service only and does not provide HVAC services. Independent licensed contractors are responsible for all work performed.
-</div>
+    fetch("https://hooks.zapier.com/hooks/catch/25953681/uwv4zeh/", {
+      method: "POST",
+      body: data
+    })
+    .then(() => {
+      form.reset();
+      successMsg.style.display = "block";
+    })
+    .catch(() => {
+      alert("Submission failed. Please try again.");
+    });
+  });
+</script>
 
 </body>
 </html>
